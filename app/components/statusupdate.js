@@ -4,15 +4,14 @@ import {unixTimeToString} from '../utils.js'
 
 
 export default class StatusUpdate extends React.Component {
-render() {
-return (
-<div>
-<div className="row">
-16
-<div className="col-md-10">
-<div className="media">
-<div className="media-left media-top">
-PIC
+        render() {
+             return (
+     <div>
+    <div className="row">
+     <div className="col-md-10">
+      <div className="media">
+       <div className="media-left media-top">
+       PIC
 </div>
 <div className="media-body">
   <Link to={"/profile/" + this.props.author._id}>

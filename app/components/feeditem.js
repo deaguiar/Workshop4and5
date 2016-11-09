@@ -6,14 +6,11 @@ import {postComment,likeFeedItem, unlikeFeedItem} from '../server';
 
 export default class FeedItem extends React.Component {
   constructor(props) {
-super(props);
-// The FeedItem's initial state is what the Feed passed to us.
-this.state = props.data;
+  super(props);
+  this.state = props.data;
 }
 handleCommentPost(commentText) {
-// Post a comment as user ID 4, which is our mock user!
 postComment(this.state._id, 4, commentText, (updatedFeedItem) => {
-// Update our state to trigger a re-render.
 this.setState(updatedFeedItem);
 });
 }
@@ -61,10 +58,6 @@ likeButtonText = "Unlike";
   }
   switch(data.type) {
   case "statusUpdate":
-  // Create a StatusUpdate. Dynamically created
-  // React component: needs a key.
-  // Keys only need to be unique among *siblings*,
-  // so we can re-use the same key as the FeedItem.
   contents = (
                    <StatusUpdate key={data._id} author={data.contents.author} postDate={data.contents.postDate} location={data.contents.location}>
                    {data.contents.contents.split("\n").map((line, i) => {
@@ -87,7 +80,7 @@ likeButtonText = "Unlike";
   <li>
   <a href="#" onClick={(e) => this.handleLikeClick(e)}>
   <span className="glyphicon glyphicon-thumbs-up">
-  </span> Like</a>
+  </span> {likeButtonText}</a>
   </li>
   <li>
   <a href="#">
@@ -118,6 +111,10 @@ likeButtonText = "Unlike";
       {data.comments.map((comment, i) => {
    return (<Comment key={i}
      author={comment.author}
+     stateId = {comment.postDate}
+     data = {comment}
+     index = {i}
+     likeCounter = {comment.likeCounter}
      postDate={comment.postDate}>{comment.contents}
    </Comment>
    );

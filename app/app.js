@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Feed from './components/feed';
-import { IndexRoute, Router, Route, browserHistory } from 'react-router'
+import {IndexRoute, Router, Route, browserHistory } from 'react-router'
 
 /**
 * A fake profile page.
@@ -30,7 +30,7 @@ render() {
 return (
 <div>{this.props.children}</div>
 )
-}
+   }
 }
 
 
